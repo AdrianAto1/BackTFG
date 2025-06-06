@@ -1,4 +1,4 @@
-package BodasAto.config;
+package config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,10 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("*") 
+                        .allowedOrigins("http://localhost:3000",          // frontend web local
+                                "http://localhost:19006",         // Expo Go en navegador
+                                "exp://localhost:19000",          // Expo Go app
+                                "https://backtfg-production-a9d4.up.railway.app" ) 
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
             }
