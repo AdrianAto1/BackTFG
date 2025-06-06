@@ -1,0 +1,21 @@
+HELP.md
+# Carpetas generadas por Maven
+target/
+
+# Logs
+*.log
+
+# Maven Wrapper (importante mantener)
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+
+
+### VS Code ###
+.vscode/
