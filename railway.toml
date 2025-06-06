@@ -1,5 +1,0 @@
-[build]
-builder = "maven"
-
-[start]
-cmd = "java -jar target/BodasFinal-0.0.1-SNAPSHOT.jar"
