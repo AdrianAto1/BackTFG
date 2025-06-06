@@ -13,10 +13,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:3000",          // frontend web local
-                                "http://localhost:19006",         // Expo Go en navegador
-                                "exp://localhost:19000",          // Expo Go app
-                                "https://backtfg-production-c447.up.railway.app" ) 
+                        .allowedOrigins("*") 
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
             }
