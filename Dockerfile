@@ -4,11 +4,14 @@ FROM eclipse-temurin:17-jdk-alpine
 # Set work directory
 WORKDIR /app
 
-# Copy and build the app
+# Copy all files
 COPY . .
 
-# Package using Maven Wrapper or install mvn locally
-RUN ./mvnw clean package
+# Give execute permission to mvnw
+RUN chmod +x mvnw
+
+# Package using Maven Wrapper
+RUN ./mvnw clean package -DskipTests
 
 # Expose port (Railway sets $PORT env automatically)
 EXPOSE 8080
