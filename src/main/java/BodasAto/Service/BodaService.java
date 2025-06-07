@@ -70,11 +70,11 @@ public class BodaService {
             boda.getNombreNovio2(),
             boda.getInvitados() != null
                 ? boda.getInvitados().stream().map(Invitado::getIdInvitado).collect(Collectors.toList())
-                : null,
+                : List.of(),  // return empty list instead of null
             boda.getMesas() != null
                 ? boda.getMesas().stream().map(Mesa::getIdMesa).collect(Collectors.toList())
-                : null,
-            null 
+                : List.of(),  // return empty list instead of null
+            null
         );
     }
 
