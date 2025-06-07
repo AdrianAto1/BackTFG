@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Package using Maven Wrapper or install mvn locally
-RUN ./mvnw clean package -DskipTests
+RUN ./mvnw clean package
 
 # Expose port (Railway sets $PORT env automatically)
 EXPOSE 8080
