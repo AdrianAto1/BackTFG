@@ -8,7 +8,9 @@ WORKDIR /app
 COPY . .
 
 # Give execute permission to mvnw
-RUN chmod +x mvnw
+RUN apk add --no-cache bash dos2unix \
+    && dos2unix mvnw \
+    && chmod +x mvnw
 
 # Package using Maven Wrapper
 RUN ./mvnw clean package -DskipTests
@@ -18,3 +20,4 @@ EXPOSE 8080
 
 # Run the jar
 CMD ["java", "-jar", "target/BodasFinal-0.0.1-SNAPSHOT.jar"]
+
