@@ -1,23 +1,23 @@
 # Use Eclipse Temurin (Java 17) base image
 FROM eclipse-temurin:17-jdk-alpine
 
-# Set work directory
+# Install necessary packages: bash for mvnw and dos2unix to fix line endings
+RUN apk add --no-cache bash dos2unix
+
+# Set working directory inside the container
 WORKDIR /app
 
-# Copy all files
+# Copy project files to the container
 COPY . .
 
-# Give execute permission to mvnw
-RUN apk add --no-cache bash dos2unix \
-    && dos2unix mvnw \
-    && chmod +x mvnw
+# Fix line endings (for Windows users) and give execute permissions to Maven Wrapper
+RUN dos2unix mvnw && chmod +x mvnw
 
-# Package using Maven Wrapper
+# Build the project using Maven Wrapper (skip tests to speed up)
 RUN ./mvnw clean package -DskipTests
 
-# Expose port (Railway sets $PORT env automatically)
+# Expose the application port (Railway will set $PORT)
 EXPOSE 8080
 
-# Run the jar
+# Run the generated JAR file
 CMD ["java", "-jar", "target/BodasFinal-0.0.1-SNAPSHOT.jar"]
-
