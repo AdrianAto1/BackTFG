@@ -14,7 +14,7 @@ COPY . .
 RUN dos2unix mvnw && chmod +x mvnw
 
 # Build the project using Maven Wrapper (skip tests to speed up)
-RUN ./mvnw clean package -DskipTests
+RUN /bin/bash ./mvnw clean package -DskipTests
 
 # Expose the application port (Railway will set $PORT)
 EXPOSE 8080
